@@ -94,6 +94,8 @@ class Player:
         value,soft,split,splitVal,blackjack = hand.handValue()
         if value > 21:
             return 'B'
+        if blackjack:
+            return 'BJ'
         if split:
             if splits[splitVal][dealerCard] == 'Y':
                 return 'P'
@@ -165,6 +167,7 @@ class Hand:
             total += aces
 
         if total == 21 and soft:
+            soft=False
             blackjack = True
 
         return total, soft,split,splitVal,blackjack
@@ -174,5 +177,6 @@ sh = Shoe(8,0.8)
 pl = Player(1000)
 hand= Hand([sh.pull(),sh.pull()])
 print(hand)
-print(hand.handValue())
-print(pl.basicStrategy(hand,random.randrange(10)))
+dealerCard = random.randrange(10)
+print(hand.handValue(),dealerCard)
+print(pl.basicStrategy(hand,dealerCard))

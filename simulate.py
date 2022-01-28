@@ -1,21 +1,21 @@
-import * from bj
+from bj import *
 
 class Table:
     def __init__(self,decks=8,pen=0.8)
-        self.players = Player()
+        self.player = Player()
         self.shoe = Shoe(decks,pen)
         self.dealerCard = None
         
     def simulate(self):
         pass
     def dealPlayer(self,player):
-        
-        for hand in player.hands:
-            self.playHand(hand,)
+        #deal two cards
+        hand = Hand([self.shoe.pull(),self.shoe.pull()])
+        self.player.hands.append(hand)
     
-    def playHand(self,hand,player):
+    def playHand(self,hand):
         bust = False
-        move = player.play(hand,self.dealerCard)
+        move = self.player.play(hand,self.dealerCard)
 
         while not bust and move != 'S':
             
