@@ -91,7 +91,7 @@ class Player:
         3:['Y','Y','Y','Y','Y','Y','N','N','N','N'],
         2:['Y','Y','Y','Y','Y','Y','N','N','N','N'],
         }
-        value,soft,split,splitVal = hand.handValue()
+        value,soft,split,splitVal,blackjack = hand.handValue()
         if value > 21:
             return 'B'
         if split:
